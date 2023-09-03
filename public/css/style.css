@@ -6,3 +6,34 @@ nav{
     background: #f0f5ff;
     margin-bottom: 15px;
 }
+
+nav.flex{
+    background: white;
+}
+
+
+
+.card{
+    margin-bottom: 10px;
+}
+
+.card-img{
+    height: 400px;
+    background-position: center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.card-img, .card-author{
+    border-bottom-width: 10px;
+    border-right-width: 10px;
+    border-left-width: 10px;
+    border-color: white;
+}
+
+.btn.btn-outline-primary.check-post{
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
