@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -20,10 +20,10 @@
                     <a class="nav-link active" aria-current="page" href="/">Главная</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link active" aria-current="page" href="{{route('post.create')}}">Создать пост</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('posts.create')}}">Создать пост</a>
                 </li>
             </ul>
-            <form class="d-flex" role="search" action="{{ route('post.index') }}">
+            <form class="d-flex" role="search" action="{{ route('posts.index') }}">
                 <input class="form-control me-2" type="search" name="search" placeholder="Найти пост..." aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Поиск</button>
             </form>

@@ -18,7 +18,7 @@
             @endif
         @else
             <h2>По запросу <?=$_GET['search']?> ничего не найдено</h2>
-            <a href="{{route('post.index')}}" class="btn btn-outline-primary back">Отобразить все посты</a>
+            <a href="{{route('posts.index')}}" class="btn btn-outline-primary back">Отобразить все посты</a>
         @endif
     @endif
     <div class="row">
@@ -29,7 +29,7 @@
 {{--                {{$post->des}}--}}
                 <div class="card-img" style="background-image: url({{$post->img ?? asset('img/t.jpg')}})"></div>
                 <div class="card-author">Автор: {{$post->name}}</div>
-                <a href="#" class="btn btn-outline-primary check-post">Посмотреть пост</a>
+                <a href="{{ route('posts.show', ['id' => $post->post_id]) }}" class="btn btn-outline-primary check-post">Посмотреть пост</a>
             </div>
         </div>
         @endforeach

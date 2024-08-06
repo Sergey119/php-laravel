@@ -59,15 +59,16 @@ class PostController extends Controller
         $post->des = $request->des;
         $post->author_id = rand(1,4);
 
-        if ($request->file('img'))
+        if ($request->file('image'))
         {
-           $path = Storage::putFile('public', $request->file('img'));
+           $path = Storage::putFile('public', $request->file('image'));
            $url = Storage::url($path);
            $post->img = $url;
         }
 
         $post->save();
 
+        //Функция "->with(...)" не работает
         return redirect()->route('posts.index')->with('success', 'Пост успешно создан!');
     }
 
@@ -79,7 +80,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::join('users', 'author_id', '=', 'users.id')->find($id);
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -90,7 +92,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -102,7 +105,26 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->short_title =
+            Str::length($request->title)>30 ?
+                Str::substr($request->title, 0, 30) . '...' :
+                $request->title;
+        $post->des = $request->des;
+
+        if ($request->file('image'))
+        {
+            $path = Storage::putFile('public', $request->file('image'));
+            $url = Storage::url($path);
+            $post->img = $url;
+        }
+
+        $post->update();
+        $id = $post->post_id;
+
+        //Функция "->with(...)" не работает
+        return redirect()->route('posts.show', compact('id'))->with('success', 'Пост успешно изменен!');
     }
 
     /**
@@ -113,6 +135,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+        //Функция "->with(...)" не работает
+        return redirect()->route('posts.index')->with('success', 'Пост успешно удален!');
     }
 }
