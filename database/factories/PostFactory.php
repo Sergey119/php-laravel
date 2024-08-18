@@ -17,9 +17,9 @@ class PostFactory extends Factory
     //#[ArrayShape()] public function definition() : array
     public function definition()
     {
-        $title = fake()->realText(rand(10, 40));
-        $short_title = mb_strlen($title)>30 ? mb_substr($title, 0, 30) . '...' : $title;
-        $created = fake()->dateTimeBetween("-30 days", "-1 daya");
+        $title = fake()->realText(rand(10, 25));
+        $short_title = mb_strlen($title)>20 ? mb_substr($title, 0, 20) . '...' : $title;
+        $created = fake()->dateTimeBetween("-30 days", "-1 days");
 
         return [
             'title' => $title,

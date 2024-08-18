@@ -2,6 +2,12 @@ body{
     background: white;
 }
 
+.for-title{
+    font-weight: 500;
+    font-size: 32px;
+    margin: 16px;
+}
+
 nav{
     background: #f0f5ff;
     margin-bottom: 15px;
@@ -9,6 +15,12 @@ nav{
 
 nav.flex{
     background: white;
+}
+
+.row{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card-header {
@@ -20,7 +32,7 @@ nav.flex{
 }
 
 .card-img{
-    height: 280px;
+    height: 256px;
     width: auto;
     border-radius: 20px;
     margin-top: 10px;
@@ -35,13 +47,13 @@ nav.flex{
 /*    border-color: white;*/
 /*}*/
 
-.btn.btn-outline-primary, .btn.btn-outline-dark, .btn.btn-outline-danger, .card-img, .card-img.card-img__max, .card-author, .card-date{
-    margin-bottom: 10px;
-    margin-left: 10px;
+.btn.btn-outline-primary, .btn.btn-outline-dark, .btn.btn-outline-danger, .card-img, .card-img.card-img__max, .card-des, .card-author, .card-date{
+    margin-bottom: 16px;
+    margin-left: 16px;
 }
 
-.card-img, .card-img.card-img__max, .card-author, .card-date, .btn.btn-outline-primary.check-post{
-    margin-right: 10px;
+.card-img, .card-img.card-img__max, .card-des, .card-author, .card-date, .btn.btn-outline-primary.check-post{
+    margin-right: 16px;
 }
 
 .card-img__max{
