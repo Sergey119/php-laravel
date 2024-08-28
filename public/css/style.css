@@ -10,17 +10,27 @@ body{
 
 nav{
     background: #f0f5ff;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 }
 
 nav.flex{
     background: white;
 }
 
-.row{
+.row, .pagination{
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.text-sm{
+    padding: 8px;
+}
+
+.container-fluid{
+    width: 80%;
+    padding-right: 32px;
+    padding-left: 32px;
 }
 
 .card-header {
@@ -28,14 +38,14 @@ nav.flex{
 }
 
 .card{
-    margin-bottom: 10px;
+    margin-bottom: 16px;
 }
 
 .card-img{
-    height: 256px;
+    height: 250px;
     width: auto;
     border-radius: 20px;
-    margin-top: 10px;
+    margin-top: 16px;
     background-position: center center;
     -webkit-background-size: cover;
     background-size: cover;

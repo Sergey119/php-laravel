@@ -17,7 +17,7 @@
     <div class="container-fluid">
 
         <div class="container navbar-collapse" id="navbarSupportedContent">
-            <ul class="col-6 navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item active">
                     <a class="nav-link active" aria-current="page" href="/">Главная</a>
                 </li>
