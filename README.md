@@ -64,4 +64,10 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
 # php-laravel
+
+## ЗЫ
+
+- Проверить наличие функционала оповещений (Alerts) при действиях пользователя (авторизация, выходи из системы етс).
+- Page 404 ???
