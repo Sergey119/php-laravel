@@ -17,6 +17,16 @@ nav.flex{
     background: white;
 }
 
+img.text, .btn-secondary{
+    margin-top: 128px;
+}
+
+.btn-secondary{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
 .row, .pagination{
     width: 80%;
     margin-left: auto;
@@ -42,7 +52,7 @@ nav.flex{
 }
 
 .card-img{
-    height: 250px;
+    height: 249px;
     width: auto;
     border-radius: 20px;
     margin-top: 16px;
@@ -73,7 +83,3 @@ nav.flex{
 .card-btn{
     display: flex;
 }
-
-
-
-

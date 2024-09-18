@@ -2,7 +2,7 @@
 @section('content')
     @if(isset($_GET['search']))
         @if(count($posts) > 0)
-            <h2>Результаты поиска по запросу <?=$_GET['search']?></h2>
+            <h2>Результаты поиска по запросу "<?=htmlspecialchars($_GET['search'])?>"</h2>
             @if((count($posts)) == 1)
                 <p class="lead">Всего найден {{count($posts)}} пост</p>
             @else
@@ -17,7 +17,7 @@
                 @endif
             @endif
         @else
-            <h2>По запросу <?=$_GET['search']?> ничего не найдено</h2>
+            <h2>По запросу "<?=htmlspecialchars($_GET['search'])?>" ничего не найдено</h2>
             <a href="{{route('post.index')}}" class="btn btn-outline-primary back">Отобразить все посты</a>
         @endif
     @endif

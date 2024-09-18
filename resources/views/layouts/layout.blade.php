@@ -11,6 +11,9 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link href="{{asset('js/bootstrap/bootstrap.js')}}" rel="stylesheet">
     <link href="{{asset('img/favicon.png')}}" rel="shortcut icon">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -46,10 +49,12 @@
                     @endif
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
-                        </a>
 
+                        <button data-toggle="dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+                        </button>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
@@ -62,6 +67,7 @@
                             </form>
                         </div>
                     </li>
+
                 @endguest
             </ul>
 
@@ -70,9 +76,6 @@
 </nav>
 
 <div class="container">
-    <script>
-
-    </script>
     @if($errors->any())
         @foreach($errors->all() as $error)
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -82,6 +85,17 @@
         @endforeach
     @endif
     <!-- На это месте должна была стоять флешка что все ок -->
+    <!-- Ниже закомментированный кусок кода нерабочий -->
+
+{{--    @if(session('success'))--}}
+{{--    <div class="alert alert-success alert-dismissible fade show" role="alert">--}}
+{{--    {{ session('success') }}--}}
+{{--       <button type="button" class="close" data-dismiss="alert" aria-label="Close">--}}
+{{--           <span aria-hidden="true">×</span>--}}
+{{--       </button>--}}
+{{--    </div>--}}
+{{--    @endif--}}
+
     @yield('content')
 </div>
 </body>

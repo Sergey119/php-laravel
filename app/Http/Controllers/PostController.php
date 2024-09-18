@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -10,6 +11,12 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -58,7 +65,8 @@ class PostController extends Controller
                 Str::substr($request->title, 0, 20) . '...' :
                     $request->title;
         $post->des = $request->des;
-        $post->author_id = rand(1,4);
+
+        $post->author_id = Auth::user()->id;
 
         if ($request->file('image'))
         {
@@ -82,6 +90,12 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::join('users', 'author_id', '=', 'users.id')->find($id);
+
+        if (!$post) {
+            return redirect()->route('post.index')
+                ->withErrors('Пост не найден');
+        }
+
         return view('post.show', compact('post'));
     }
 
@@ -94,6 +108,12 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
+
+        if ($post->author_id != \Auth::user()->id) {
+            return redirect()->route('post.index')
+                ->withErrors('Вы не можете редактировать данный пост');
+        }
+
         return view('post.edit', compact('post'));
     }
 
@@ -107,6 +127,12 @@ class PostController extends Controller
     public function update(PostRequest $request, $id)
     {
         $post = Post::find($id);
+
+        if ($post->author_id != \Auth::user()->id) {
+            return redirect()->route('post.index')
+                ->withErrors('Вы не можете редактировать данный пост');
+        }
+
         $post->title = $request->title;
         $post->short_title =
             Str::length($request->title)>30 ?
@@ -137,6 +163,10 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+        if ($post->author_id != \Auth::user()->id) {
+            return redirect()->route('post.index')
+                ->withErrors('Вы не можете удалить данный пост');
+        }
         $post->delete();
         //Функция "->with(...)" не работает
         return redirect()->route('post.index')->with('success', 'Пост успешно удален!');
